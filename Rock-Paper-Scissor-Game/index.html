@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tital"><p class="tital-text">ROCK, PAPER & SCISSOR...SHOOT !!</p>
+    </div>
+
+    <div class="button-row">
+
+    <button class="rock" onclick="
+    playgame('Rock');
+   "><img class="img-img" src="hand.png" alt="ROCK"></button>
+
+    <button onclick="
+    playgame('Paper');
+    "><img class="img-img" src="palm.png" alt="PAPER"></button>
+    
+    <button onclick="
+    playgame('Scissor');
+    "><img class="img-img" src="scissors.png" alt="SCISSORs"></button>
+
+    </div>
+    <div class="reset-button">
+        <button onclick="
+        countscore.Loss=0;
+        countscore.Win=0;
+        countscore.Tie=0;
+    document.getElementById('resultDisplay').innerText ='';
+    document.getElementById('scoreDisplay').innerText ='';
+    "><img class="img-reset" src="rest.png" alt=""></button>
+    </div>
+
+    <div class="gap">
+        <div class="score">
+            <p id="resultDisplay"></p>
+            <p id="scoreDisplay"></p>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
