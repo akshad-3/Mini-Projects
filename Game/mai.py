@@ -36,4 +36,5 @@ while True:
     screen.blit(cat_surface,cat_rect)
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(70)
+    
