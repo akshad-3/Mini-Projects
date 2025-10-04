@@ -30,6 +30,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        if event.type == pygame.MOUSEMOTION:
+            if cat_rect.collidepoint(event.pos):print('collide')
+            
     
     screen.blit(back_surface,(0,0))
     screen.blit(ground_surface,(0,356))
