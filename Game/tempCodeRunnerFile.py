@@ -31,7 +31,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if (cat_rect.bottom==356):
+        if (cat_rect.bottom==370):
             if event.type == pygame.KEYDOWN:
                 if event.key ==pygame.K_SPACE :
                     cat_gravity=-20
@@ -47,7 +47,7 @@ while True:
     screen.blit(text_surfece,text_rect)
     #pygame.draw.line(screen,'black',(0,0),pygame.mouse.get_pos())
     
-    flower_rect.x-=6                 
+    flower_rect.x-=4
     if flower_rect.right<=0:flower_rect.left=736
     screen.blit(flower_surface,flower_rect)
     
