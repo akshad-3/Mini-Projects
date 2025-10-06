@@ -34,7 +34,7 @@ while True:
         if (cat_rect.bottom==356):
             if event.type == pygame.KEYDOWN:
                 if event.key ==pygame.K_SPACE :
-                    cat_gravity=-20
+                    cat_gravity=-20#its for moving the cat upward by -20
             if event.type==pygame.MOUSEBUTTONDOWN:
                 if cat_rect.collidepoint(pygame.mouse.get_pos()):
                     cat_gravity=-20
