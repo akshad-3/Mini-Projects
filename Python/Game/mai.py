@@ -5,21 +5,21 @@ pygame.init()
 screen=pygame.display.set_mode((736,420))
 pygame.display.set_caption('First game')
 clock=pygame.time.Clock()
-test_font=pygame.font.Font('Game/Pixel Game.otf',80)
+test_font=pygame.font.Font('Python/Game/Pixel Game.otf',80)
 
 
-back_surface=pygame.image.load('Game/clouds.jpg').convert()
+back_surface=pygame.image.load('Python/Game/clouds.jpg').convert()
 
-ground_surface=pygame.image.load('Game/ground.jpg').convert()
+ground_surface=pygame.image.load('Python/Game/ground.jpg').convert()
 
 text_surfece=test_font.render('First Game',False,'White')
 text_rect=text_surfece.get_rect(center=(368,50))
 
-flower_surface=pygame.image.load('Game/flower.png').convert_alpha()
+flower_surface=pygame.image.load('Python/Game/flower.png').convert_alpha()
 flower_surface = pygame.transform.scale_by(flower_surface, 0.09)  
 flower_rect=flower_surface.get_rect(bottomright=(600,356))
 
-cat_surface=pygame.image.load('Game/cat.png')
+cat_surface=pygame.image.load('Python/Game/cat.png')
 cat_surface=pygame.transform.scale_by(cat_surface,0.09)
 cat_rect=cat_surface.get_rect(topleft=(30,356))
 cat_gravity=0
