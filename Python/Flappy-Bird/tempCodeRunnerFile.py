@@ -1,3 +1,3 @@
-game_sprites['number']=(
+game_item['number']=(
 #     pygame.image.load('')
 # )
