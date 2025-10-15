@@ -77,7 +77,6 @@ def maingame():
                 score+=1
                 print(f"your score is {score}")
                 game_sound['point'].play()
-            #gamesound
         
         if playerspeedY < playerMAXspeedY and not playerFLPPED:
             playerspeedY+=playeraccY
@@ -183,9 +182,7 @@ pygame.display.set_caption('Flappy bird')
 clock=pygame.time.Clock()
 test_font=pygame.font.Font('font.otf',70)
 
-# game_item['number']=(
-#     pygame.image.load('')
-# )
+
 game_item['numbers']=(
     pygame.transform.scale_by(pygame.image.load('0.png').convert_alpha(),0.5),
     pygame.transform.scale_by(pygame.image.load('1.png').convert_alpha(),0.5),
