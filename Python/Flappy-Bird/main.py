@@ -148,6 +148,8 @@ def isCollide(playerx,playery,upperpipe,lowerpipe):
 #         {'x':pipex,'y':y2}
 #     ]
 #     return pipe
+#the formula was wrong here
+
 
 def getrandomepipe():
     offset = SCREENHIGHT / 3  
