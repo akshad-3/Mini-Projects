@@ -174,32 +174,32 @@ SCREENHIGHT=603
 game_sound={}
 game_item={}
 screen=pygame.display.set_mode((SCREENWIDTH,SCREENHIGHT))
-player='bird.png'
-background='background.png'
-pipe='pipe.png'
+player='Python/Flappy-Bird/bird.png'
+background='Python/Flappy-Bird/background.png'
+pipe='Python/Flappy-Bird/pipe.png'
 
 
 pygame.init()
 pygame.display.set_caption('Flappy bird')
 clock=pygame.time.Clock()
-test_font=pygame.font.Font('font.otf',70)
+test_font=pygame.font.Font('Python/Flappy-Bird/font.otf',70)
 
 
 game_item['numbers']=(
-    pygame.transform.scale_by(pygame.image.load('0.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('1.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('2.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('3.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('4.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('5.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('6.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('7.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('8.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('9.png').convert_alpha(),0.5)
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/0.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/1.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/2.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/3.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/4.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/5.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/6.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/7.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/8.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/9.png').convert_alpha(),0.5)
     
 )
-game_item['message']=pygame.image.load('message.png').convert_alpha()
-game_item['base']=pygame.image.load('ground.png').convert_alpha()
+game_item['message']=pygame.image.load('Python/Flappy-Bird/message.png').convert_alpha()
+game_item['base']=pygame.image.load('Python/Flappy-Bird/ground.png').convert_alpha()
 game_item['pipe']=(
     pygame.transform.rotate(pygame.image.load(pipe).convert_alpha(),180),
     pygame.image.load(pipe).convert_alpha()
@@ -208,10 +208,10 @@ game_item['pipe']=(
 game_item['background']=pygame.image.load(background).convert()
 game_item['player']=pygame.transform.scale_by(pygame.image.load(player).convert_alpha(),0.3)
 
-game_sound['die'] = pygame.mixer.Sound('dry-fart.mp3')
-game_sound['point'] = pygame.mixer.Sound('point.wav')
-game_sound['wing'] = pygame.mixer.Sound('wing.mp3')
-game_sound['menu'] = pygame.mixer.Sound('menu.mp3')
+game_sound['die'] = pygame.mixer.Sound('Python/Flappy-Bird/dry-fart.mp3')
+game_sound['point'] = pygame.mixer.Sound('Python/Flappy-Bird/point.wav')
+game_sound['wing'] = pygame.mixer.Sound('Python/Flappy-Bird/wing.mp3')
+game_sound['menu'] = pygame.mixer.Sound('Python/Flappy-Bird/menu.mp3')
 
 while True:
     welcomescreen()
