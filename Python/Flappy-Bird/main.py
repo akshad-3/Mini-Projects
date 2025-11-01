@@ -16,13 +16,14 @@ def welcomescreen():
                 pygame.quit()
                 exit()
             elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+                game_sound['menu'].stop()
                 return
             else:
                 screen.blit(game_item['background'],(0,0))
                 screen.blit(game_item['player'],(playerx,playery))
                 screen.blit(game_item['base'],(basex,540))
                 screen.blit(game_item['message'],(messagex,messagey))
-                #game_sound['menu'].play()
+                game_sound['menu'].play()
                 pygame.display.update()
                 clock.tick(60)
 def maingame():
@@ -30,6 +31,7 @@ def maingame():
     playerx=int(SCREENWIDTH/5)
     playery=int(SCREENHIGHT/2)
     basex=0
+    
     
     newpipe1=getrandomepipe()
     newpipe2=getrandomepipe()
@@ -124,6 +126,7 @@ def maingame():
 def isCollide(playerx,playery,upperpipe,lowerpipe):
     if playery > 540-65 or playery<0:
         game_sound['die'].play()
+        #screen.blit(game_item['Over'],(0,0))
         return True
     
     for pipe in upperpipe:
@@ -177,6 +180,7 @@ screen=pygame.display.set_mode((SCREENWIDTH,SCREENHIGHT))
 player='Python/Flappy-Bird/bird.png'
 background='Python/Flappy-Bird/background.png'
 pipe='Python/Flappy-Bird/pipe.png'
+Over='Python/Flappy-Bird/Over.jpg'
 
 
 pygame.init()
@@ -207,8 +211,9 @@ game_item['pipe']=(
 
 game_item['background']=pygame.image.load(background).convert()
 game_item['player']=pygame.transform.scale_by(pygame.image.load(player).convert_alpha(),0.3)
+game_item['Over']=pygame.image.load(Over).convert_alpha()
 
-game_sound['die'] = pygame.mixer.Sound('Python/Flappy-Bird/dry-fart.mp3')
+game_sound['die'] = pygame.mixer.Sound('Python/Flappy-Bird/die.mp3')
 game_sound['point'] = pygame.mixer.Sound('Python/Flappy-Bird/point.wav')
 game_sound['wing'] = pygame.mixer.Sound('Python/Flappy-Bird/wing.mp3')
 game_sound['menu'] = pygame.mixer.Sound('Python/Flappy-Bird/menu.mp3')

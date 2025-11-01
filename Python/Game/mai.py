@@ -1,5 +1,7 @@
 import pygame
 from sys import exit
+from random import randint
+
 
 def display_score():
     current_time = int(pygame.time.get_ticks()/1000)-start_time
@@ -45,7 +47,7 @@ flower_surface=pygame.image.load('Python/Game/flower.png').convert_alpha()
 flower_surface = pygame.transform.scale_by(flower_surface, 0.09)  
 flower_rect=flower_surface.get_rect(bottomright=(600,356))
 
-obstacle_rect_list=
+obstacle_rect_list=[]
 
 cat_surface=pygame.image.load('Python/Game/cat.png')
 cat_surface=pygame.transform.scale_by(cat_surface,0.09)
