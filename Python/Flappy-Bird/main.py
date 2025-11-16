@@ -26,7 +26,53 @@ def welcomescreen():
                 game_sound['menu'].play()
                 pygame.display.update()
                 clock.tick(60)
-def maingame():
+def gameover(score, best_score):
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type==KEYDOWN and event.key==K_ESCAPE):
+                pygame.quit()
+                exit()
+            elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+                return
+        
+        screen.blit(game_item['background'],(0,0))
+        screen.blit(game_item['base'],(0,540))
+        
+        game_over_x = (SCREENWIDTH - game_item['Over'].get_width()) / 2 
+        game_over_y = SCREENHIGHT * 0.34
+        screen.blit(game_item['Over'], (game_over_x, game_over_y))
+        
+        score_text = test_font.render('Score :', True, (255, 255, 255))
+        score_text_rect = score_text.get_rect(center=(SCREENWIDTH/4.5, SCREENHIGHT * 0.20))
+        screen.blit(score_text, score_text_rect)
+        
+        myDigits = [int(x) for x in list(str(score))]
+        width = sum([game_item['numbers'][digit].get_width() for digit in myDigits])
+        offset = (SCREENWIDTH - width) / 2.3
+        for digit in myDigits:
+            screen.blit(game_item['numbers'][digit], (offset, SCREENHIGHT * 0.16))
+            offset += game_item['numbers'][digit].get_width()
+        
+        best_text = test_font.render('Best :', True, (255, 255, 255))
+        best_text_rect = best_text.get_rect(center=(SCREENWIDTH/1.4, SCREENHIGHT * 0.20))
+        screen.blit(best_text, best_text_rect)
+        
+        bestDigits = [int(x) for x in list(str(best_score))]
+        width = sum([game_item['numbers'][digit].get_width() for digit in bestDigits])
+        offset = (SCREENWIDTH - width) / 1.1
+        for digit in bestDigits:
+            screen.blit(game_item['numbers'][digit], (offset, SCREENHIGHT * 0.16))
+            offset += game_item['numbers'][digit].get_width()
+        
+        restart_text = test_font.render('Press SPACE', True, (255, 255, 255))
+        restart_text_rect = restart_text.get_rect(center=(SCREENWIDTH/2, SCREENHIGHT * 0.79))
+        screen.blit(restart_text, restart_text_rect)
+        
+        pygame.display.update()
+        clock.tick(60)
+
+def maingame(best_score):
     score=0
     playerx=int(SCREENWIDTH/5)
     playery=int(SCREENHIGHT/2)
@@ -70,7 +116,9 @@ def maingame():
         crashing= isCollide(playerx,playery,upperpipe,lowerpipe)
 
         if crashing:
-            return
+            if score > best_score:
+                best_score = score
+            return score, best_score
         
         playerMID= playerx + game_item['player'].get_width()/2
         for pipe in upperpipe:
@@ -177,33 +225,33 @@ SCREENHIGHT=603
 game_sound={}
 game_item={}
 screen=pygame.display.set_mode((SCREENWIDTH,SCREENHIGHT))
-player='Python/Flappy-Bird/bird.png'
-background='Python/Flappy-Bird/background.png'
-pipe='Python/Flappy-Bird/pipe.png'
-Over='Python/Flappy-Bird/Over.jpg'
+player='bird.png'
+background='background.png'
+pipe='pipe.png'
+Over='Over.png '
 
 
 pygame.init()
 pygame.display.set_caption('Flappy bird')
 clock=pygame.time.Clock()
-test_font=pygame.font.Font('Python/Flappy-Bird/font.otf',70)
+test_font=pygame.font.Font('font.otf',70)
 
 
 game_item['numbers']=(
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/0.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/1.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/2.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/3.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/4.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/5.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/6.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/7.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/8.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('Python/Flappy-Bird/9.png').convert_alpha(),0.5)
+    pygame.transform.scale_by(pygame.image.load('0.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('1.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('2.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('3.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('4.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('5.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('6.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('7.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('8.png').convert_alpha(),0.5),
+    pygame.transform.scale_by(pygame.image.load('9.png').convert_alpha(),0.5)
     
 )
-game_item['message']=pygame.image.load('Python/Flappy-Bird/message.png').convert_alpha()
-game_item['base']=pygame.image.load('Python/Flappy-Bird/ground.png').convert_alpha()
+game_item['message']=pygame.image.load('message.png').convert_alpha()
+game_item['base']=pygame.image.load('ground.png').convert_alpha()
 game_item['pipe']=(
     pygame.transform.rotate(pygame.image.load(pipe).convert_alpha(),180),
     pygame.image.load(pipe).convert_alpha()
@@ -211,13 +259,13 @@ game_item['pipe']=(
 
 game_item['background']=pygame.image.load(background).convert()
 game_item['player']=pygame.transform.scale_by(pygame.image.load(player).convert_alpha(),0.3)
-game_item['Over']=pygame.image.load(Over).convert_alpha()
-
-game_sound['die'] = pygame.mixer.Sound('Python/Flappy-Bird/die.mp3')
-game_sound['point'] = pygame.mixer.Sound('Python/Flappy-Bird/point.wav')
-game_sound['wing'] = pygame.mixer.Sound('Python/Flappy-Bird/wing.mp3')
-game_sound['menu'] = pygame.mixer.Sound('Python/Flappy-Bird/menu.mp3')
-
+game_item['Over']=pygame.transform.scale_by(pygame.image.load(Over).convert_alpha(),0.5)
+game_sound['die'] = pygame.mixer.Sound('die.mp3')
+game_sound['point'] = pygame.mixer.Sound('point.wav')
+game_sound['wing'] = pygame.mixer.Sound('wing.mp3')
+game_sound['menu'] = pygame.mixer.Sound('menu.mp3')
+best_score=0
 while True:
     welcomescreen()
-    maingame()
+    score, best_score = maingame(best_score)
+    gameover(score, best_score)
