@@ -29,7 +29,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputBaseFilename=mysetup
-SetupIconFile=C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\icon.ico
+SetupIconFile=C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\icon.ico
 SolidCompression=yes
 WizardStyle=modern dark windows11
 
@@ -40,30 +40,31 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\0.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\1.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\2.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\3.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\4.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\5.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\6.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\7.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\8.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\9.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\background.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\bird.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\die.mp3"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\dry-fart.mp3"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\font.otf"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\ground.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\menu.mp3"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\message.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\Over.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\pipe.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\point.wav"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\wing.mp3"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\uchih\Desktop\Mini Projects\Python\Flappy-Bird\dist\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\0.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\1.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\2.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\3.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\4.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\5.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\6.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\7.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\8.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\9.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\background.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\bird.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\die.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\dry-fart.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\font.otf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\ground.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\menu.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\message.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\Over.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\pipe.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\point.wav"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\wing.mp3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\uchih\Desktop\Mini-Projects\Python\Flappy-Bird\dist\highscore.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
