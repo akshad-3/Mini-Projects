@@ -3,6 +3,16 @@ from sys import exit
 from pygame.locals import *
 import random
 
+def load_highscore():
+    try:
+        with open("highscore.txt", "r") as f:
+            return int(f.read())
+    except:
+        return 0
+
+def save_highscore(score):
+    with open("highscore.txt", "w") as f:
+        f.write(str(score))
 
 def welcomescreen():
     playerx=int(SCREENWIDTH/5)
@@ -27,7 +37,7 @@ def welcomescreen():
                 pygame.display.update()
                 clock.tick(60)
 def gameover(score, best_score):
-    
+
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type==KEYDOWN and event.key==K_ESCAPE):
@@ -264,8 +274,9 @@ game_sound['die'] = pygame.mixer.Sound('die.mp3')
 game_sound['point'] = pygame.mixer.Sound('point.wav')
 game_sound['wing'] = pygame.mixer.Sound('wing.mp3')
 game_sound['menu'] = pygame.mixer.Sound('menu.mp3')
-best_score=0
+best_score = load_highscore()
 while True:
     welcomescreen()
     score, best_score = maingame(best_score)
+    save_highscore(best_score)
     gameover(score, best_score)
