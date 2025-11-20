@@ -1,0 +1,5 @@
+/Output
+*.spec
+/dist
+/build
+*.iss
