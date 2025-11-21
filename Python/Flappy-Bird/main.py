@@ -5,7 +5,7 @@ from sys import exit
 from pygame.locals import *
 import random
 def get_data_path():
-    if getattr(sys, 'frozen', False):  # running from EXE
+    if getattr(sys, 'frozen', False):
         base_path = os.path.join(os.getenv('APPDATA'), "FlappyBirdClone")
     else:
         base_path = os.path.dirname(__file__)
@@ -198,7 +198,6 @@ def maingame(best_score):
 def isCollide(playerx,playery,upperpipe,lowerpipe):
     if playery > 540-65 or playery<0:
         game_sound['die'].play()
-        #screen.blit(game_item['Over'],(0,0))
         return True
     
     for pipe in upperpipe:
