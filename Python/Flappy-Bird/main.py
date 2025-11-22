@@ -211,18 +211,7 @@ def isCollide(playerx,playery,upperpipe,lowerpipe):
             game_sound['die'].play()
             return True
     return False
-# def getrandomepipe():
-#     pipeHight=game_item['pipe'][0].get_height()
-#     offset = SCREENHIGHT/3
-#     y2 = offset + random.randrange(0,int(SCREENHIGHT - game_item['base'].get_height() - 1.2 * offset))
-#     pipex=SCREENWIDTH + 10
-#     y1 = pipeHight - y2 + offset
-#     pipe=[
-#         {'x': pipex,'y': y1},
-#         {'x':pipex,'y':y2}
-#     ]
-#     return pipe
-#the formula was wrong here
+
 
 
 def getrandomepipe():
