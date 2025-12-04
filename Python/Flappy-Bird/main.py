@@ -4,6 +4,18 @@ import pygame
 from sys import exit
 from pygame.locals import *
 import random
+
+def resource_path(relative_path):
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+
+# initialize pygame BEFORE loading anything
+pygame.init()
+pygame.font.init()
+clock = pygame.time.Clock()
+
+
 def get_data_path():
     if getattr(sys, 'frozen', False):
         base_path = os.path.join(os.getenv('APPDATA'), "FlappyBirdClone")
@@ -231,51 +243,90 @@ def getrandomepipe():
     ]
     return pipe
 
-SCREENWIDTH=801
-SCREENHIGHT=603     
-# GROUNDY=SCREENHIGHT * 0.8
-game_sound={}
-game_item={}
-screen=pygame.display.set_mode((SCREENWIDTH,SCREENHIGHT))
-player='C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/bird.png'
-background='C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/background.png'
-pipe='C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/pipe.png'
-Over='C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/Over.png '
+SCREENWIDTH = 801
+SCREENHIGHT = 603
+game_item = {}
+game_sound = {}
+screen = pygame.display.set_mode((SCREENWIDTH, SCREENHIGHT))
+
+player = resource_path("assets/bird.png")
+background = resource_path("assets/background.png")
+pipe = resource_path("assets/pipe.png")
+Over = resource_path("assets/Over.png")
+
+font_file = resource_path("assets/font.otf")
+test_font = pygame.font.Font(font_file, 70)
 
 
-pygame.init()
-pygame.display.set_caption('Flappy bird')
-clock=pygame.time.Clock()
-test_font=pygame.font.Font('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/font.otf',70)
+
+# Numbers 0–9
+game_item['numbers'] = tuple(
+    pygame.transform.scale_by(
+        pygame.image.load(resource_path(os.path.join("assets", f"{i}.png"))).convert_alpha(),
+        0.5
+    ) for i in range(10)
+)
+
+# Other images
+game_item['message'] = pygame.image.load(resource_path(os.path.join("assets", "message.png"))).convert_alpha()
+game_item['base'] = pygame.image.load(resource_path(os.path.join("assets", "ground.png"))).convert_alpha()
+
+# Pipes
+pipe_img = pygame.image.load(pipe).convert_alpha()
+game_item['pipe'] = (
+    pygame.transform.rotate(pipe_img, 180),
+    pipe_img
+)
+
+# Background and player
+game_item['background'] = pygame.image.load(background).convert()
+game_item['player'] = pygame.transform.scale_by(
+    pygame.image.load(player).convert_alpha(), 0.3
+)
+
+game_item['Over'] = pygame.transform.scale_by(
+    pygame.image.load(Over).convert_alpha(), 0.5
+)
+
+# Sounds
+game_sound['die'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "die.mp3")))
+game_sound['point'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "point.wav")))
+game_sound['wing'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "wing.mp3")))
+game_sound['menu'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "menu.mp3")))
+
+# pygame.init()
+# pygame.display.set_caption('Flappy bird')
+# clock=pygame.time.Clock()
+# test_font=pygame.font.Font('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/font.otf',70)
 
 
-game_item['numbers']=(
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/0.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/1.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/2.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/3.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/4.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/5.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/6.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/7.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/8.png').convert_alpha(),0.5),
-    pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/9.png').convert_alpha(),0.5)
+# game_item['numbers']=(
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/0.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/1.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/2.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/3.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/4.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/5.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/6.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/7.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/8.png').convert_alpha(),0.5),
+#     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/9.png').convert_alpha(),0.5)
     
-)
-game_item['message']=pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/message.png').convert_alpha()
-game_item['base']=pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/ground.png').convert_alpha()
-game_item['pipe']=(
-    pygame.transform.rotate(pygame.image.load(pipe).convert_alpha(),180),
-    pygame.image.load(pipe).convert_alpha()
-)
+# )
+# game_item['message']=pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/message.png').convert_alpha()
+# game_item['base']=pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/ground.png').convert_alpha()
+# game_item['pipe']=(
+#     pygame.transform.rotate(pygame.image.load(pipe).convert_alpha(),180),
+#     pygame.image.load(pipe).convert_alpha()
+# )
 
-game_item['background']=pygame.image.load(background).convert()
-game_item['player']=pygame.transform.scale_by(pygame.image.load(player).convert_alpha(),0.3)
-game_item['Over']=pygame.transform.scale_by(pygame.image.load(Over).convert_alpha(),0.5)
-game_sound['die'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/die.mp3')
-game_sound['point'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/point.wav')
-game_sound['wing'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/wing.mp3')
-game_sound['menu'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/menu.mp3')
+# game_item['background']=pygame.image.load(background).convert()
+# game_item['player']=pygame.transform.scale_by(pygame.image.load(player).convert_alpha(),0.3)
+# game_item['Over']=pygame.transform.scale_by(pygame.image.load(Over).convert_alpha(),0.5)
+# game_sound['die'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/die.mp3')
+# game_sound['point'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/point.wav')
+# game_sound['wing'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/wing.mp3')
+# game_sound['menu'] = pygame.mixer.Sound('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/menu.mp3')
 best_score = load_highscore()
 while True:
     welcomescreen()
