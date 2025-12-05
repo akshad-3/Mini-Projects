@@ -10,7 +10,6 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-# initialize pygame BEFORE loading anything
 pygame.init()
 pygame.font.init()
 clock = pygame.time.Clock()
@@ -259,7 +258,6 @@ test_font = pygame.font.Font(font_file, 70)
 
 
 
-# Numbers 0–9
 game_item['numbers'] = tuple(
     pygame.transform.scale_by(
         pygame.image.load(resource_path(os.path.join("assets", f"{i}.png"))).convert_alpha(),
@@ -267,18 +265,15 @@ game_item['numbers'] = tuple(
     ) for i in range(10)
 )
 
-# Other images
 game_item['message'] = pygame.image.load(resource_path(os.path.join("assets", "message.png"))).convert_alpha()
 game_item['base'] = pygame.image.load(resource_path(os.path.join("assets", "ground.png"))).convert_alpha()
 
-# Pipes
 pipe_img = pygame.image.load(pipe).convert_alpha()
 game_item['pipe'] = (
     pygame.transform.rotate(pipe_img, 180),
     pipe_img
 )
 
-# Background and player
 game_item['background'] = pygame.image.load(background).convert()
 game_item['player'] = pygame.transform.scale_by(
     pygame.image.load(player).convert_alpha(), 0.3
@@ -288,7 +283,6 @@ game_item['Over'] = pygame.transform.scale_by(
     pygame.image.load(Over).convert_alpha(), 0.5
 )
 
-# Sounds
 game_sound['die'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "die.mp3")))
 game_sound['point'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "point.wav")))
 game_sound['wing'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "wing.mp3")))
