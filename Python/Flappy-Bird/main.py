@@ -14,17 +14,19 @@ pygame.init()
 pygame.font.init()
 clock = pygame.time.Clock()
 
-
 def get_data_path():
-    if getattr(sys, 'frozen', False):
-        base_path = os.path.join(os.getenv('APPDATA'), "FlappyBirdClone")
-    else:
-        base_path = os.path.dirname(__file__)
+    if sys.platform == "win32":
+        base_path = os.path.join(os.getenv("APPDATA"), "FlappyBirdClone")
+    elif sys.platform == "darwin":  # macOS
+        base_path = os.path.expanduser(
+            "~/Library/Application Support/FlappyBirdClone"
+        )
+    else:  # Linux
+        base_path = os.path.expanduser("~/.flappybirdclone")
 
-    if not os.path.exists(base_path):
-        os.makedirs(base_path)
-
+    os.makedirs(base_path, exist_ok=True)
     return base_path
+
 
 HIGHSCORE_FILE = os.path.join(get_data_path(), "highscore.txt")
 
