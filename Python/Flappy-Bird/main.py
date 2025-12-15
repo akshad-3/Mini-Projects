@@ -14,17 +14,19 @@ pygame.init()
 pygame.font.init()
 clock = pygame.time.Clock()
 
-
 def get_data_path():
-    if getattr(sys, 'frozen', False):
-        base_path = os.path.join(os.getenv('APPDATA'), "FlappyBirdClone")
-    else:
-        base_path = os.path.dirname(__file__)
+    if sys.platform == "win32":
+        base_path = os.path.join(os.getenv("APPDATA"), "FlappyBirdClone")
+    elif sys.platform == "darwin":  # macOS
+        base_path = os.path.expanduser(
+            "~/Library/Application Support/FlappyBirdClone"
+        )
+    else:  # Linux
+        base_path = os.path.expanduser("~/.flappybirdclone")
 
-    if not os.path.exists(base_path):
-        os.makedirs(base_path)
-
+    os.makedirs(base_path, exist_ok=True)
     return base_path
+
 
 HIGHSCORE_FILE = os.path.join(get_data_path(), "highscore.txt")
 
@@ -293,7 +295,7 @@ game_sound['menu'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "me
 # clock=pygame.time.Clock()
 # test_font=pygame.font.Font('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/font.otf',70)
 
-
+#added
 # game_item['numbers']=(
 #     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/0.png').convert_alpha(),0.5),
 #     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/1.png').convert_alpha(),0.5),
