@@ -75,10 +75,6 @@ flappy-bird-clone/
 └── README.md
 ```
 
-## 🎨 Screenshots
-
-*Add your game screenshots here*
-
 ## 🛠️ Built With
 
 - **Python** - Programming language
@@ -101,9 +97,6 @@ Contributions are welcome! Feel free to:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
@@ -112,9 +105,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/yourusername/flappy-bird-clone](https://github.com/yourusername/flappy-bird-clone)
+AKshad - [@Instagram](https://www.instagram.com/akss_xd/?next=%2F)
+         [@Linkdin](www.linkedin.com/in/akshad-patil-955883365)
 
 ---
 
