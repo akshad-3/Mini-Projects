@@ -293,7 +293,7 @@ game_sound['menu'] = pygame.mixer.Sound(resource_path(os.path.join("assets", "me
 # clock=pygame.time.Clock()
 # test_font=pygame.font.Font('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/font.otf',70)
 
-
+#added
 # game_item['numbers']=(
 #     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/0.png').convert_alpha(),0.5),
 #     pygame.transform.scale_by(pygame.image.load('C:/Users/uchih/Desktop/Mini-Projects/Python/Flappy-Bird/1.png').convert_alpha(),0.5),
