@@ -15,4 +15,5 @@ decimal_ip=[]
 for part in partss:
     decimal_ip.append(str(int(part,2)))
 
-print(decimal_ip[:-1])
+print(".".join(decimal_ip))
+#added a comment
