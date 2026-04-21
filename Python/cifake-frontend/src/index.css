@@ -1,0 +1,76 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  background: linear-gradient(135deg, #1B0B3A, #3B1C6E, #7E49C7);
+  margin: 0;
+  font-family: sans-serif;
+}
+header{
+  background-color: #070512;
+  height: 80px;
+  box-shadow: 0 5px 2px -2px rgba(0,0,0,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header img{
+  width: 190px;
+}
+main{
+  min-height: 100vh;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+}
+#drop-area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #FFFFFF;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 20px 0;
+  background: #070512;
+  cursor: pointer;
+  width: 500px;
+  height: 300px;
+}
+#drop-area:hover { 
+  border-color: #b1b1b1;
+}
+#analyzerBtn{
+  background-color: #7E49C7;
+  color: #FFFFFF;
+  width: 150px;
+  height: 38px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+#analyzerBtn:hover { 
+  background: #693da7;
+  transition: 150ms;
+}
+#analyzerBtn:disabled { 
+  background: #aaa;
+  cursor: not-allowed; 
+}
+#drop-area p{
+  height: fit-content;
+  margin-bottom: 25px;
+}
+#drop-area input{
+  display: none;
+}
+#drop-area img{
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+
+}
+
