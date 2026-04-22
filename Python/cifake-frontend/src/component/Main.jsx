@@ -32,9 +32,7 @@ export default function Main() {
     const formData = new FormData();
     formData.append("image", file);
 
-    // Reads from .env when local, reads from Vercel dashboard when deployed
     const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
-    //              ↑ if env variable missing, falls back to localhost automatically
 
     try {
       const response = await fetch(`${API}/predict`, {
