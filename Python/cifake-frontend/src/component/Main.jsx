@@ -21,6 +21,8 @@ export default function Main() {
     setError(null);
   };
 
+  // added new comment
+
   const analyzeImage = async () => {
     if (!file) return;
 
