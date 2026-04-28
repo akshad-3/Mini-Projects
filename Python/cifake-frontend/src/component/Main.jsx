@@ -20,9 +20,6 @@ export default function Main() {
     setConfidence(null);
     setError(null);
   };
-
-  // added new comment
-
   const analyzeImage = async () => {
     if (!file) return;
 
