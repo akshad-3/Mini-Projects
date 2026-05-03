@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPortfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.87/build/spline-viewer.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Akshad</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#">Work</a>
+      <a href="#">Get In Touch</a>
+    </nav>
+    </header>
+    <main>
+      <div class="content">
+        <div class="hello-container">
+          <span id="hello-text"></span>
+        </div>
+        <h1 class="akshad">I'm Akshad Patil</h1>
+      </div>
+      <div id="typing-container">
+        <span id="typing-text"></span>
+        <span class="cursor">|</span>
+      </div>
+    </main>
+    <spline-viewer class="pop-anima" 
+  url="https://prod.spline.design/3aDli9N6CCzKNAf0/scene.splinecode"
+  loading="eager" 
+  style="width: 100%; height: 100%;"
+></spline-viewer>
+  </div>
+  <div class="scroll-down-indicator">
+    ↓
+  </div>
+  <section id="about" class="about-section">
+    <h2>About Me</h2>
+    <p>Hello! I'm a web developer passionate about creating interactive experiences.</p>
+  </section>
+  
+ 
+  
+  <script src="index.js"></script>
+</body>
+</html>
