@@ -5,13 +5,21 @@ import clsx from 'clsx'
 export default function Main(){
   const [currentWord , useCurrentWord] = useState("akshad")
   const [gussedLetters , setgussedLetters] = useState([])
-  console.log(gussedLetters)
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-  function addGussedLetters(letter){
-    setgussedLetters(prevLetter =>[...prevLetter , letter])
-  }
-  const languageElement = languages.map(lang =>{
+  const wrongGuessCount = gussedLetters.filter(letter => !currentWord.includes(letter)).length
+  console.log(wrongGuessCount)
+
+  const isGameWon = 
+    currentWord.split("").every(letter => gussedLetters.includes(letter))
+  const isGameLost = wrongGuessCount >= languages.length-1
+
+  const isGameOver = isGameWon || isGameLost
+
+
+
+  const languageElement = languages.map((lang,index) =>{
+    const isLanguageLost = index < wrongGuessCount
     const style={
       backgroundColor:lang.backgroundColor,
       color:lang.color
@@ -19,7 +27,7 @@ export default function Main(){
     return(
       <span 
         style={style}
-        className="chips"
+        className={clsx('chips' , isLanguageLost && 'lost')}
         key={lang.name}
         >
         {lang.name}
@@ -27,7 +35,7 @@ export default function Main(){
     )
   })
   const letterElement = currentWord.split("").map((letter,index) => (
-    <span key={index}>{letter.toUpperCase()}</span>
+    <span key={index}>{gussedLetters.includes(letter) ? letter.toUpperCase() : ""}</span>
   ))
   const alphabetElement = alphabet.split("").map(letter => {
     const isGuessed = gussedLetters.includes(letter)
@@ -61,7 +69,7 @@ return(
       <section className="keyboard">
         {alphabetElement}
       </section>
-      <button className="newgameButton">New Game</button>
+      {isGameOver && <button className="newgameButton">New Game</button>}
     </main>
   )
 }
