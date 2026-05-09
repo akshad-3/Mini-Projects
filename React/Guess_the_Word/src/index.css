@@ -26,7 +26,7 @@ header h1{
 header p{
   line-height: 6mm;
   max-width: 400px;
-
+  
 }
 main {
   width: 100%;
@@ -34,6 +34,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+section.Nothing{
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  width: 100%;
+  align-items: center;
+  border-radius: 9px;
+  margin-block: 30px;
+  max-width: 400px;
 }
 section.game-status{
   display: flex;
@@ -49,7 +59,26 @@ section.game-status{
   margin-block: 30px;
   max-width: 400px;
 }
+section.game-lost{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  background-color: #EC5D49;
+  border-radius: 9px;
+  text-align: center;
+  color: #F9F4DA;
+  font-weight: 500;
+  margin-block: 30px;
+  max-width: 400px;
+}
 section.game-status > h2{
+  font-size: 1.25rem;
+  margin: 5px;
+  font-size: 20px;
+}
+section.game-lost > h2{
   font-size: 1.25rem;
   margin: 5px;
   font-size: 20px;
@@ -57,6 +86,26 @@ section.game-status > h2{
 section.game-status > p{
   margin: 5px;
   font-size: 16px;
+}
+section.game-lost > p{
+  margin: 5px;
+  font-size: 16px;
+}
+section.fairwell{
+  display: flex;
+  flex-direction: column;   /* ← was missing */
+  align-items: center;      /* ← was missing */
+  text-align: center;       /* ← was missing */
+  height: 100%;
+  width: 100%;
+  background-color: #7A5EA7;
+  border-radius: 9px;
+  border-style: dashed;
+  color: #F9F4DA;
+  font-weight: 500;
+  margin-block: 30px;
+  max-width: 400px;
+  padding: 10px;  
 }
 section.language-chips{
   display: flex;
@@ -73,7 +122,7 @@ span.chips{
   display: inline-block;
 }
 span.lost::before {
-  content: "💀";
+  content: "\1F480";
   position: absolute;
   display: flex;
   align-items: center;
@@ -84,6 +133,7 @@ span.lost::before {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 section.word {
   display: flex;
@@ -101,6 +151,9 @@ section.word > span {
   font-size: 1.125rem;
   border-bottom: 1px solid #F9F4DA;
 }
+section.word > span.missing-letters{
+  color: #EC5D49;
+}
 section.keyboard {
   margin-top: 50px;
   display: flex;
@@ -108,6 +161,10 @@ section.keyboard {
   gap: 6px;
   justify-content: center;
   max-width: 480px;
+}
+.btn:disabled{
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 .btn{
   background-color: #FCBA29;
