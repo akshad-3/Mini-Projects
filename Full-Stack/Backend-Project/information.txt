@@ -1,0 +1,9 @@
+So this is the file that made to right down the notes for this chai and backend series.
+
+I am starting to note down from the 11th video so,
+
+1. we are using the cloudinary for the serverside
+2. using multer for to upload the file from web appliacation 
+    the ulternate option was to use "express-fileupload"
+
+ 
