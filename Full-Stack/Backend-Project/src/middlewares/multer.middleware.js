@@ -12,4 +12,4 @@ const storage = multer.diskStorage({
 export const upload = multer({ 
     storage 
 })
-//this is the commit for the push on the github
+
