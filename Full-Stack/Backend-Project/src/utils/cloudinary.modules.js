@@ -9,20 +9,19 @@ cloudinary.config({
 const uploadOnCloudinary = async (localFilePath)=>{
     try {
         if (!localFilePath) return null
-        const response = await cloudinary.uploader.upload(local,{
+        const response = await cloudinary.uploader.upload(localFilePath,{
             resource_type: "auto"
         })
-        console.log("file is uploaded on cloudinary",response.url);
+        fs.unlinkSync(localFilePath)
         return response;
     } catch (error) {
+        console.log("CLOUDINARY ERROR:", error.message)
+        if (fs.existsSync(localFilePath)) {
         fs.unlinkSync(localFilePath)
+    }
         return null;
 
     }
 }
-    
-cloudinary.v2.uploader.upload("",{
-    public_id:"akhad__"},
-    function(error,result){console.log(result);});
 
 export {uploadOnCloudinary}
