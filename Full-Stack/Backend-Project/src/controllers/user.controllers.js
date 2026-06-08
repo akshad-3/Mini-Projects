@@ -58,4 +58,3 @@ const registerUser = asyncHandler(async(req, res)=>{
 
 export { registerUser }
 
-//added this command to push the new changes to git
