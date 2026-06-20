@@ -1,5 +1,24 @@
+import { APIerror } from "../utils/APIerror";
 import { asyncHandlers } from "../utils/asyncHandler";
+import jwt from "jsonwebtoken"
+import { User } from "../models/user.models";
 
 export const verifyJWT = asyncHandlers(async(requestAnimationFrame, res, next)=>{
-    const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","")
+    try {
+        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","")
+        if(!token){
+            throw new APIerror(401,"Unauthorized request")
+        }
+        const decodedToken = jwt.verify(token, proccess.env.ACCESS_TOKEN_SECRET)
+    
+        const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
+    
+        if(!user){
+            throw new APIerror(401,"Invalid access Token")
+        }
+        req.user = user
+        next()
+    } catch (error) {
+        throw new APIerror(401,error?.message || "invalid access token")
+    }
 })

@@ -32,7 +32,8 @@ const registerUser = asyncHandler(async(req, res)=>{
         $or: [{ username }, { email }]
     })
     if (existingUser) {
-        throw new APIerror(409, "User with this email or username already exists")
+        throw new APIerror(400
+            , "User with this email or username already exists")
     }
 
     const avatarLocalPath = req.files?.avatar?.[0]?.path
@@ -75,7 +76,14 @@ const registerUser = asyncHandler(async(req, res)=>{
 const loginUser = asyncHandler(async(req,res)=>{
     const {email, username, password} = req.body
 
-    if(!username || !email){
+    if(!username &&
+        
+        
+        
+        
+        
+        
+        !email){
         throw new APIerror(400,"Username or passward required")
 
     }
@@ -115,7 +123,26 @@ const loginUser = asyncHandler(async(req,res)=>{
 })
 
 const logOutUser = asyncHandler(async(req, res)=>{
-    
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set: {
+                refreshToken: undefiened
+            }
+        },
+        {
+            new: true
+        }
+    )
+    const options = {
+        httponly: true,
+        secure: true
+    }
+    return res.status(200)
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
+    .json(new APIresponce(200,{},"user logged out"))
+
 })
-export { registerUser, loginUser }
+export { registerUser, loginUser, logOutUser}
 
