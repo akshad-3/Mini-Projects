@@ -3,20 +3,22 @@ import { APIerror } from "../utils/APIerror.js"
 import { User } from "../models/user.models.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.modules.js"
 import { APIresponce } from "../utils/APIresponce.js";
-import { cache } from "react";
-
 const genarateAccessandRefreshTokens = async(userId)=>{
     try {
-        const user = await user.findOne(userId)
-        const accessToken = user.generateAccessToken
-        const refreshToken = user.generateRefreshToken
-
+        const user = await User.findById(userId)
+         if (!user) {
+            throw new APIerror(404, "User not found");
+        }
+        const accessToken = user.generateAccessToken()
+        const refreshToken = user.generateRefreshToken()
         user.refreshToken = refreshToken
-        await user.save({validateBeforeSave : false})
+        await user.save({ validateBeforeSave : false })
 
-        return {accessToken,refreshToken}
+        return {accessToken, refreshToken}
     } catch (error) {
-        throw new APIerror(500,"somthing went wrong while genarating access and refresh tokens")
+        // throw new APIerror(500,"somthing went wrong while genarating access and refresh tokens")
+        console.log(error);
+        
         
     }
 }
@@ -76,14 +78,7 @@ const registerUser = asyncHandler(async(req, res)=>{
 const loginUser = asyncHandler(async(req,res)=>{
     const {email, username, password} = req.body
 
-    if(!username &&
-        
-        
-        
-        
-        
-        
-        !email){
+    if(!username && !email){
         throw new APIerror(400,"Username or passward required")
 
     }
@@ -101,12 +96,12 @@ const loginUser = asyncHandler(async(req,res)=>{
         throw new APIerror(401,"Invalid user Cridentials")
     }
 
-    const {accessToken, refreshToken} = await generateAccessToken(user._id)
+    const {accessToken, refreshToken} = await genarateAccessandRefreshTokens(user._id)
 
     const loggedInUser = await user.findById(user._id).select("-password -refreshToken")
 
     const options = {
-        httponly: true,
+        httpOnly: true,
         secure: true
     }
     return res.status(200).cookie("accessToken", accessToken , options).cookie("refreshToken",refreshToken, options)
@@ -127,7 +122,7 @@ const logOutUser = asyncHandler(async(req, res)=>{
         req.user._id,
         {
             $set: {
-                refreshToken: undefiened
+                refreshToken: undefined
             }
         },
         {
@@ -135,7 +130,7 @@ const logOutUser = asyncHandler(async(req, res)=>{
         }
     )
     const options = {
-        httponly: true,
+        httpOnly: true,
         secure: true
     }
     return res.status(200)
