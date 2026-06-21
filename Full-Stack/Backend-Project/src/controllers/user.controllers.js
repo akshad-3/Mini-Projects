@@ -18,11 +18,14 @@ const genarateAccessandRefreshTokens = async(userId)=>{
     } catch (error) {
         // throw new APIerror(500,"somthing went wrong while genarating access and refresh tokens")
         console.log(error);
+        throw new APIerror(
+        500,
+        "Something went wrong while generating access and refresh tokens"
+    );
         
         
     }
 }
-
 const registerUser = asyncHandler(async(req, res)=>{
     const {fullname, email, username, password} = req.body
 
@@ -98,7 +101,7 @@ const loginUser = asyncHandler(async(req,res)=>{
 
     const {accessToken, refreshToken} = await genarateAccessandRefreshTokens(user._id)
 
-    const loggedInUser = await user.findById(user._id).select("-password -refreshToken")
+    const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
     const options = {
         httpOnly: true,
@@ -116,7 +119,6 @@ const loginUser = asyncHandler(async(req,res)=>{
         )
     )
 })
-
 const logOutUser = asyncHandler(async(req, res)=>{
     await User.findByIdAndUpdate(
         req.user._id,
@@ -139,5 +141,54 @@ const logOutUser = asyncHandler(async(req, res)=>{
     .json(new APIresponce(200,{},"user logged out"))
 
 })
-export { registerUser, loginUser, logOutUser}
+
+const   = asyncHandler(async(req, res)=>{
+    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+
+    if(!incomingRefreshToken){
+        throw new APIerror(401,"unauthorized Request")
+    }
+    try {
+        const decodedToken = jwt.verify(
+            incomingRefreshToken,
+            process.env.REFRESH_TOKEN_SECRET
+        )
+    
+        const user = await User.findById(decodedToken?._id)
+    
+        if(!user){
+            throw new APIerror(401,"Invalid refresh token")
+        }
+        
+        if(incomingRefreshToken !== user?.refreshToken){
+            throw new APIerror(401,"refresh token is expired")
+        }
+        const options = {
+            httpOnly = true,
+            secure = true
+        }
+        const {accessToken, newRefreshToken} = await genarateAccessandRefreshTokens(user._id)
+    
+        return res.status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", newRefreshToken, options)
+        .json(
+            new APIresponce(
+                200,
+                {accessToken, refreshToken: newRefreshToken},
+                "Access token refreshed"
+            )
+        )
+    } catch (error) {
+        throw new APIerror(401,error?.message || "Invalid refresh Token")
+    }
+    
+})
+
+export { 
+    registerUser,
+    loginUser,
+    logOutUser,
+    refreshAccessToken
+}
 
