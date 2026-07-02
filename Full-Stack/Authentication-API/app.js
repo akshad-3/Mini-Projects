@@ -1,10 +1,7 @@
 import express from "express"
-
+import userRouter from "./routes/user.routes"
 const app = express()
 
 app.use(express.json())
-app.get("/",(req,res)=>{
-    res.send("Server is successfully started")
-})
-
+app.use("/",userRouter)
 export default app
