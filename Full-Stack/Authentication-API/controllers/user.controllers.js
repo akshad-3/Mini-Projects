@@ -38,4 +38,3 @@ const registerUser = async(req, res)=>{
 }
 
 export { registerUser }
-//to be onest i am fuckeddddd
