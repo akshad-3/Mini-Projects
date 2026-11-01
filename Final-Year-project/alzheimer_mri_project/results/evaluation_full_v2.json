@@ -1,0 +1,82 @@
+{
+  "test_accuracy": 0.5528455284552846,
+  "n_test": 738,
+  "classes": [
+    "MildDemented",
+    "ModerateDemented",
+    "NonDemented",
+    "VeryMildDemented"
+  ],
+  "confusion_matrix": [
+    [
+      23,
+      0,
+      30,
+      52
+    ],
+    [
+      5,
+      0,
+      0,
+      6
+    ],
+    [
+      20,
+      0,
+      282,
+      64
+    ],
+    [
+      26,
+      0,
+      127,
+      103
+    ]
+  ],
+  "mean_confidence_correct": 0.6447477340698242,
+  "share_over_99pct_confidence": 0.0,
+  "red_flags": [
+    "Class 'MildDemented' is almost never recognised (recall 0.22).",
+    "Class 'ModerateDemented' is almost never recognised (recall 0.00).",
+    "Model is >95% sure about 'mid-gray image' - it may be keying on non-anatomical cues."
+  ],
+  "report": {
+    "MildDemented": {
+      "precision": 0.3108108108108108,
+      "recall": 0.21904761904761905,
+      "f1-score": 0.2569832402234637,
+      "support": 105.0
+    },
+    "ModerateDemented": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 11.0
+    },
+    "NonDemented": {
+      "precision": 0.642369020501139,
+      "recall": 0.7704918032786885,
+      "f1-score": 0.7006211180124223,
+      "support": 366.0
+    },
+    "VeryMildDemented": {
+      "precision": 0.4577777777777778,
+      "recall": 0.40234375,
+      "f1-score": 0.4282744282744283,
+      "support": 256.0
+    },
+    "accuracy": 0.5528455284552846,
+    "macro avg": {
+      "precision": 0.3527394022724319,
+      "recall": 0.34797079308157686,
+      "f1-score": 0.34646969662757854,
+      "support": 738.0
+    },
+    "weighted avg": {
+      "precision": 0.5215898478992725,
+      "recall": 0.5528455284552846,
+      "f1-score": 0.5325864811033385,
+      "support": 738.0
+    }
+  }
+}

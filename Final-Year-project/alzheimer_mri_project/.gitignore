@@ -1,0 +1,54 @@
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# MRI datasets
+data/
+data_86k/
+data_8k/
+data_40k/
+datasets/
+
+
+# Preprocessed data and caches
+cache/
+*.npz
+*.npy
+*.h5
+
+# Trained models and checkpoints
+*.keras
+*.hdf5
+*.ckpt
+*.weights.h5
+checkpoints/
+models/
+
+# Training outputs
+outputs/
+logs/
+runs/
+tensorboard/
+
+# Generated Grad-CAM images
+gradcam/
+gradcam_outputs/
+*_gradcam.*
+*_heatmap.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
